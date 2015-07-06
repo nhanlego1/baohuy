@@ -1,0 +1,519 @@
+<?php
+
+function commerce_options_stock_field_widget_info() {
+  return array(
+      'commerce_options_stock_field_widget' => array(
+          'label' => t('Select list with Stock Control'),
+          'field types' => array('commerce_option_set_reference'),
+      ),
+  );
+}
+
+function commerce_options_stock_field_widget_form(&$form, &$form_state, $field, $instance, $langcode, $items, $delta) {
+
+  if (array_key_exists('#entity', $form) && commerce_stock_product_type_enabled($form['#entity']->type)) {
+
+    $option_sets = commerce_option_get_sets();
+
+    $options = array('' => t('None'));
+
+    foreach ($option_sets as $option_set) {
+      $options[$option_set->set_id] = $option_set->name;
+    }
+
+    switch ($instance['widget']['type']) {
+
+      case 'commerce_options_stock_field_widget':
+
+        $element = array(
+            '#type' => 'fieldset',
+            '#title' => t('Commerce Options Stock Control'),
+            '#langcode' => $langcode,
+        );
+
+        $element['option_stock_set'] = array(
+            '#type' => 'select',
+            '#title' => t('Select Options'),
+            '#default_value' => isset($items[$delta]['set_id']) ? $items[$delta]['set_id'] : NULL,
+            '#options' => $options,
+        );
+
+        $element['set_id'] = array(
+            '#type' => 'value',
+            '#value' => $field['field_name'],
+            '#element_validate' => array('_commerce_options_stock_validate'),
+        );
+
+        $bundles = field_info_bundles('commerce_option');
+
+        foreach ($bundles as $set_id => $bundle) {
+
+          $instances = field_info_instances('commerce_option', $set_id);
+
+          if (!empty($instances)) {
+
+            $optionfield = array_shift($instances);
+
+            $field_name = $optionfield['field_name'];
+
+            $element[$field_name] = array(
+                '#type' => 'fieldset',
+                '#title' => t(''),
+                '#langcode' => $langcode,
+                '#states' => array(
+                    'visible' => array(// action to take.
+                        ':input[name="' . $field['field_name'] . '[und][0][option_stock_set]"]' => array('value' => $set_id),
+                    ),
+                ),
+            );
+
+            $optionfield = array_shift(field_read_fields(array('field_name' => $field_name)));
+
+            if ($optionfield['type'] == 'list_text' || $optionfield['type'] == 'list_integer' || $optionfield['type'] == 'list_float') {
+              if (!empty($optionfield['settings']['allowed_values'])) {
+                foreach ($optionfield['settings']['allowed_values'] as $key => $value) {
+                  $element[$field_name][$field_name . '_' . $key] = array(
+                      '#type' => 'textfield',
+                      '#title' => t('Stock for ' . $bundle['label'] . ' ' . $value),
+                      '#default_value' => isset($form['#entity']->data[$field_name . '_stock'][$field_name . '_' . $key]) ? $form['#entity']->data[$field_name . '_stock'][$field_name . '_' . $key] : 0,
+                      '#size' => 10,
+                      '#maxlength' => 10,
+                      '#states' => array(
+                          'visible' => array(// action to take.
+                              ':input[name="' . $field['field_name'] . '[und][0][option_stock_set]"]' => array('value' => $set_id),
+                          ),
+                      ),
+                  );
+                }
+              }
+            }
+          }
+        }
+
+        break;
+    }
+
+
+    return $element;
+  }
+  else {
+    $element = array(
+        '#markup' => t('<p><br><br><b style="color: #FF0000">To use the Select list with Stock Control widget, Stock must be enabled for this product type.<br></b></p>'),
+    );
+
+    return $element;
+  }
+}
+
+function _commerce_options_stock_validate($element, &$form_state) {
+  if (isset($element['#value'])) {
+    form_set_value($element, array('set_id' => $form_state['values'][$element['#value']]['und'][0]['option_stock_set']), $form_state);
+  }
+}
+
+function _commerce_options_stock_add_to_cart_validate($element, &$form_state) {
+
+  if (isset($element['#value'])) {
+    $product = commerce_product_load($element['#value']);
+
+    $field = array_shift(field_read_fields(array('type' => 'commerce_option_set_reference')));
+
+    if (!empty($field)) {
+
+      $field_name = $field['field_name'];
+
+      if (property_exists($product, $field_name)) {
+
+        $entity_field = $product->$field_name;
+
+        if (array_key_exists('und', $entity_field) && array_key_exists('set_id', $entity_field['und'][0])) {
+
+          $instances = field_info_instances('commerce_option', $entity_field['und'][0]['set_id']);
+
+          if (!empty($instances)) {
+            $optionfield = array_shift($instances);
+
+            $option_field_name = $optionfield['field_name'];
+
+            if (array_key_exists($option_field_name . '_stock', $product->data)) {
+
+              $data = $product->data[$option_field_name . '_stock'];
+
+              $selected_option = $form_state['values'][$field_name][0][$option_field_name]['und'];
+
+              if (!empty($selected_option)) {
+                if ($form_state['values']['quantity'] > $data[$option_field_name . '_' . $selected_option]) {
+                  form_set_error('quantity', t('Maximum quantity that can be purchased is %max', array('%max' => $data[$option_field_name . '_' . $selected_option])));
+                }
+                if (!commerce_options_stock_check_cart_product_option_level($product, $selected_option, $form_state['values']['quantity'], $current_quantity)) {
+                  form_set_error('quantity', t('Maximum quantity that can be purchased is %max and you already have %quantity in your cart', array('%max' => $data[$option_field_name . '_' . $selected_option], '%quantity' => $current_quantity)));
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+function _commerce_options_checkout_stock_validate($element, &$form_state) {
+  $found_errors = FALSE;
+  // Check each line item
+  foreach ($form_state['order']->commerce_line_items['und'] as $index => $item) {
+
+    $line_item = commerce_line_item_load($item['line_item_id']);
+
+    $product = commerce_product_load($line_item->commerce_product['und'][0]['product_id']);
+
+    $quantity = $line_item->quantity;
+
+    $field = array_shift(field_read_fields(array('type' => 'commerce_option_set_reference')));
+
+    if (!empty($field)) {
+
+      $field_name = $field['field_name'];
+
+      if (property_exists($product, $field_name)) {
+
+        $entity_field = $product->$field_name;
+
+        if (array_key_exists('und', $entity_field) && array_key_exists('set_id', $entity_field['und'][0])) {
+
+          $instances = field_info_instances('commerce_option', $entity_field['und'][0]['set_id']);
+
+          if (!empty($instances)) {
+
+            $optionfield = array_shift($instances);
+
+            $option_field_name = $optionfield['field_name'];
+
+            if (array_key_exists($option_field_name . '_stock', $product->data)) {
+
+              $data = $product->data[$option_field_name . '_stock'];
+
+              $selected_options = commerce_option_load_by_line_item($line_item->line_item_id);
+
+              $selected_option = array_shift($selected_options);
+
+              $option_selected = $selected_option->$option_field_name;
+
+              if ($quantity > $data[$option_field_name . '_' . $option_selected['und'][0]['value']]) {
+                form_set_error('quantity', t('Maximum quantity that can be purchased is %max', array('%max' => $data[$option_field_name . '_' . $option_selected['und'][0]['value']])));
+                $found_errors = TRUE;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  // if out of stock items send back to the cart form
+  if ($found_errors) {
+    drupal_set_message(t('Please adjust quantities before continuing to checkout'));
+    $cart_url = url('cart', array('absolute' => TRUE));
+    drupal_goto($cart_url);
+  }
+}
+
+function commerce_options_stock_entity_presave($entity, $type) {
+
+  if ($type == 'commerce_product') {
+
+    $field = array_shift(field_read_fields(array('type' => 'commerce_option_set_reference')));
+
+    if (!empty($field)) {
+
+      $field_name = $field['field_name'];
+
+      if (property_exists($entity, $field_name)) {
+
+        $entity_field = $entity->$field_name;
+
+        if (array_key_exists('und', $entity_field) && array_key_exists('option_stock_set', $entity_field['und'][0])) {
+
+          $instances = field_info_instances('commerce_option', $entity_field['und'][0]['option_stock_set']);
+
+          if (!empty($instances)) {
+            $optionfield = array_shift($instances);
+
+            $option_field_name = $optionfield['field_name'];
+
+            $data = $entity_field['und'][0][$option_field_name];
+
+            $entity->data[$option_field_name . '_stock'] = $data;
+
+            $entity_wrapper = entity_metadata_wrapper('commerce_product', $entity);
+
+            $entity_wrapper->commerce_stock = array_sum($data);
+          }
+        }
+      }
+    }
+  }
+}
+
+function commerce_options_stock_form_alter(&$form, &$form_state, $form_id) {
+  if (strpos($form_id, "commerce_cart_add_to_cart_form") === 0) {
+    if (isset($form['product_id']['#value'])) {
+      $product = commerce_product_load($form['product_id']['#value']);
+
+      $field = array_shift(field_read_fields(array('type' => 'commerce_option_set_reference')));
+
+      if (!empty($field)) {
+
+        $field_name = $field['field_name'];
+
+        if (property_exists($product, $field_name)) {
+
+          $entity_field = $product->$field_name;
+
+          if (array_key_exists('und', $entity_field) && array_key_exists('set_id', $entity_field['und'][0])) {
+
+            $instances = field_info_instances('commerce_option', $entity_field['und'][0]['set_id']);
+
+            if (!empty($instances)) {
+
+              $optionfield = array_shift($instances);
+
+              $option_field_name = $optionfield['field_name'];
+
+              if (array_key_exists($option_field_name . '_stock', $product->data)) {
+
+                $data = $product->data[$option_field_name . '_stock'];
+
+                $states = array();
+
+                $option_values = array();
+
+                foreach ($data as $key => $value) {
+
+                  if ($value <= 0) {
+                    $option_value = substr($key, strlen($option_field_name . '_'));
+                    $option_values[] = $option_value;
+                    $states[':input[name="' . $field_name . '[0][' . $option_field_name . '][und]"],value="' . $option_value . '"'] = array('!value' => $option_value);
+                    drupal_add_js('
+                    jQuery(document).ready(function($) {
+                      $(\'' . ':input[name="' . $field_name . '[0][' . $option_field_name . '][und]"][value="' . $option_value . '"]\').live("change", function() {
+                        if($(this).val() == "' . $option_value . '"){
+                            $("#edit-submit").val("' . t('Out of Stock') . '");
+                            $("#edit-quantity").attr("disabled", true);
+                            $("#edit-quantity").val(0);
+                          }
+                        });
+                    });
+                    ', 'inline');
+                  }
+                }
+
+                $options_selector = '';
+                $options_condition = '';
+
+                foreach ($option_values as $value) {
+                  $options_selector .= '[value != "' . $value . '"]';
+                  $options_condition .= '$(this).val() != "' . $value . '" && ';
+                }
+
+                $options_condition = substr($options_condition, 0, strlen($options_condition) - 4);
+
+                drupal_add_js('
+                    jQuery(document).ready(function($) {
+                      $(\'' . ':input[name="' . $field_name . '[0][' . $option_field_name . '][und]"]' . $options_selector . '\').live("change", function() {
+                        if(' . $options_condition . '){
+                          $("#edit-submit").val("' . t('Chọn mua') . '");
+                          $("#edit-quantity").attr("disabled", false);
+                          $("#edit-quantity").val(1);
+                          }
+                        });
+                    });
+                    ', 'inline');
+
+                $form['submit']['#states'] = array(
+                    'enabled' => $states
+                );
+              }
+            }
+          }
+        }
+      }
+
+      if (isset($product->commerce_stock['und'])) {
+        $stock = $product->commerce_stock['und'];
+        $stock = $stock[0]['value'];
+        if ($stock) {
+          $form['product_id']['#element_validate'][] = '_commerce_options_stock_add_to_cart_validate';
+        }
+      }
+    }
+  }
+  elseif ($form_id == 'commerce_checkout_form_checkout') {
+    // Add validate function to the checkout form
+    $form['buttons']['continue']['#validate'][] = '_commerce_options_checkout_stock_validate';
+  }
+  elseif ($form_id == 'commerce_checkout_form_review_order') {
+    // Add validate function to the checkout review form
+    $form['buttons']['continue']['#validate'][] = '_commerce_options_checkout_stock_validate';
+  }
+}
+
+function commerce_options_stock_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'form_alter') {
+    $group = $implementations['commerce_options_stock'];
+    unset($implementations['commerce_options_stock']);
+    $implementations['commerce_options_stock'] = $group;
+  }
+}
+
+function commerce_options_stock_default_rules_configuration() {
+
+  $rules = array();
+  $rule = rules_reaction_rule();
+
+  $rule->label = t('Update product options stock when an order is completed');
+  $rule->active = TRUE;
+
+  $rule->event('commerce_checkout_complete')
+          ->action('commerce_options_stock_update_options_stock', array(
+              'commerce_order:select' => 'commerce-order',
+          ));
+
+  $rules['commerce_options_stock_update_stock'] = $rule;
+
+  return $rules;
+}
+
+function commerce_options_stock_rules_action_info() {
+  $actions = array();
+
+  $actions['commerce_options_stock_update_options_stock'] = array(
+      'label' => t('Update product options stock'),
+      'parameter' => array(
+          'commerce_order' => array(
+              'type' => 'commerce_order',
+              'label' => t('Commerce Order'),
+          ),
+      ),
+      'group' => t('Commerce Options Stock'),
+      'callbacks' => array(
+          'execute' => 'commerce_options_stock_rules_update_options_stock',
+      ),
+  );
+
+  return $actions;
+}
+
+function commerce_options_stock_rules_update_options_stock($order) {
+  $order_wrapper = entity_metadata_wrapper('commerce_order', $order);
+  $order_wrapper->commerce_line_items;
+  foreach ($order->commerce_line_items['und'] as $index => $item) {
+    $line_item = commerce_line_item_load($item['line_item_id']);
+
+    $product = commerce_product_load($line_item->commerce_product['und'][0]['product_id']);
+
+    $quantity = $line_item->quantity;
+
+    $field = array_shift(field_read_fields(array('type' => 'commerce_option_set_reference')));
+
+    if (!empty($field)) {
+
+      $field_name = $field['field_name'];
+
+      if (property_exists($product, $field_name)) {
+
+        $entity_field = $product->$field_name;
+
+        if (array_key_exists('und', $entity_field) && array_key_exists('set_id', $entity_field['und'][0])) {
+
+          $instances = field_info_instances('commerce_option', $entity_field['und'][0]['set_id']);
+
+          if (!empty($instances)) {
+
+            $optionfield = array_shift($instances);
+
+            $option_field_name = $optionfield['field_name'];
+
+            if (array_key_exists($option_field_name . '_stock', $product->data)) {
+
+              $data = $product->data[$option_field_name . '_stock'];
+
+              $selected_options = commerce_option_load_by_line_item($line_item->line_item_id);
+
+              $selected_option = array_shift($selected_options);
+
+              $option_selected = $selected_option->$option_field_name;
+
+              $product->data[$option_field_name . '_stock'][$option_field_name . '_' . $option_selected['und'][0]['value']] -= $quantity;
+
+              commerce_product_save($product);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+function commerce_options_stock_check_cart_product_option_level($product, $selectedoption, $added_quantity, &$current_quantity) {
+  $cart_qty = 0;
+  global $user;
+  // load the current cart if it exists
+  $order = commerce_cart_order_load($user->uid);
+  if (!$order) {
+    return 0;
+  }
+
+  if (!empty($order->commerce_line_items)) {
+    foreach ($order->commerce_line_items['und'] as $index => $item) {
+      $line_item = commerce_line_item_load($item['line_item_id']);
+      if ($line_item->commerce_product['und'][0]['product_id'] == $product->product_id) {
+
+        $quantity = $line_item->quantity;
+
+        $current_quantity = intval($quantity);
+
+        $field = array_shift(field_read_fields(array('type' => 'commerce_option_set_reference')));
+
+        if (!empty($field)) {
+
+          $field_name = $field['field_name'];
+
+          if (property_exists($product, $field_name)) {
+
+            $entity_field = $product->$field_name;
+
+            if (array_key_exists('und', $entity_field) && array_key_exists('set_id', $entity_field['und'][0])) {
+
+              $instances = field_info_instances('commerce_option', $entity_field['und'][0]['set_id']);
+
+              if (!empty($instances)) {
+
+                $optionfield = array_shift($instances);
+
+                $option_field_name = $optionfield['field_name'];
+
+                if (array_key_exists($option_field_name . '_stock', $product->data)) {
+
+                  $data = $product->data[$option_field_name . '_stock'];
+
+                  $selected_options = commerce_option_load_by_line_item($line_item->line_item_id);
+
+                  $selected_option = array_shift($selected_options);
+
+                  $option_selected = $selected_option->$option_field_name;
+
+                  if ($option_selected['und'][0]['value'] == $selectedoption) {
+                    if ($product->data[$option_field_name . '_stock'][$option_field_name . '_' . $option_selected['und'][0]['value']] < ($quantity + $added_quantity)) {
+                      return FALSE;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return TRUE;
+}

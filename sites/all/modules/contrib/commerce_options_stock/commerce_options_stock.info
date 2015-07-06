@@ -1,0 +1,15 @@
+name = Commerce Options Stock
+description = This module adds stock control to commerce options
+package = "Commerce Product Enhancements"
+core = 7.x
+dependencies[] = commerce_option
+dependencies[] = commerce_option_set_reference
+dependencies[] = commerce_stock
+
+
+; Information added by drupal.org packaging script on 2013-09-30
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "commerce_options_stock"
+datestamp = "1380560521"
+
