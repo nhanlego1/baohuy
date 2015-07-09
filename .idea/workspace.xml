@@ -2,54 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4565c4ea-1e8c-4e74-8f14-a9ee2a93fa56" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/css/README.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/css/YOURTHEME-alpha-default-narrow.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/css/YOURTHEME-alpha-default-normal.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/css/YOURTHEME-alpha-default-wide.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/css/YOURTHEME-alpha-default.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/css/global.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/font/HelveticaNeue.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/font/HelveticaNeue.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/font/HelveticaNeue.ttf" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/font/HelveticaNeue.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/add-cart.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/back-top.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/bg-active-li.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/bg-ads.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/bg-cate.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/bg-cti.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/bg-hl.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/bg-mail.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/bg-pho.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/bg-search.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/cart-item.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/date-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/lienhe.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/more-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/nex.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/order.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/pre.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/images/time-icon.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/js/mercvn.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/logo.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/merc.info" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/preprocess/README.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/process/README.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/screenshot.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/template.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/templates/README.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/templates/node/node--article.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/templates/node/node--product.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/templates/views/views-view-fields--promotion-product.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/templates/views/views-view-unformatted--brand-list--page-1.tpl.php" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/sites/all/themes/merc/templates/views/views-view-unformatted--brand-list--page.tpl.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.htaccess" afterPath="$PROJECT_DIR$/.htaccess" />
     </list>
     <ignored path="baohuy.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/Dummy.txt" changelist="4565c4ea-1e8c-4e74-8f14-a9ee2a93fa56" time="1436449149005" ignored="false" />
     <file path="/baohuy.info" changelist="4565c4ea-1e8c-4e74-8f14-a9ee2a93fa56" time="1436171970437" ignored="false" />
+    <file path="/.gitignore" changelist="4565c4ea-1e8c-4e74-8f14-a9ee2a93fa56" time="1436449349872" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,10 +28,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name=".htaccess" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name=".htaccess" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.htaccess">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="69" selection-start="817" selection-end="817" vertical-scroll-proportion="0.017991005">
+            <state line="19" column="69" selection-start="817" selection-end="817" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="1" selection-start="70" selection-end="70" vertical-scroll-proportion="0.01764706">
               <folding />
             </state>
           </provider>
@@ -98,6 +66,7 @@
       <list>
         <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/sites/all/themes/baohuy/baohuy.info" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -253,7 +222,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-2" y="23" width="1440" height="828" extended-state="0" />
+    <frame x="-2" y="23" width="1440" height="828" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -343,7 +312,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="69" selection-start="817" selection-end="817" vertical-scroll-proportion="0.017991005">
+        <state line="19" column="69" selection-start="817" selection-end="817" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="1" selection-start="70" selection-end="70" vertical-scroll-proportion="0.01764706">
           <folding />
         </state>
       </provider>
