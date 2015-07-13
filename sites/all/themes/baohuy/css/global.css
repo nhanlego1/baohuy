@@ -48,8 +48,17 @@ ul.nice-menu > li:last-child {
 }
 ul.nice-menu a {
 	color: #fefefe;
-	text-transform: uppercase;
 	font-size: 16px;
+}
+ul.nice-menu a:hover,
+ul.nice-menu a.active {
+	color: #07748b;
+}
+ul.nice-menu > li > a {
+	text-transform: uppercase;
+}
+ul.nice-menu ul a {
+	text-transform: capitalize;
 }
 ul.nice-menu-down > li.menuparent,
 ul.nice-menu-down > li.menuparent:hover {
@@ -69,7 +78,7 @@ ul.nice-menu > li > ul:before {
 	height: 21px;
 	background: url("../images/background-menu-dropdown.png") no-repeat scroll 0 0 transparent;
 	position:absolute;
-	left: 40px;
+	left: 60px;
 	top: 24px;
 }
 ul.nice-menu ul li {
@@ -86,4 +95,33 @@ ul.nice-menu > li > a {
 }
 ul.nice-menu-down .menuparent a {
 	padding: 0;
+}
+
+// Social
+#block-block-1 ul.social{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+#block-block-1 ul.social li {
+	display: inline-block;
+	margin: 0 10px 0 0;
+}
+#block-block-1 ul.social li a {
+	display: block;
+	width: 20px;
+	height: 20px;
+	font-size: 0;
+}
+#block-block-1 ul.social li a#facebook {
+	background: url("../images/social.png") no-repeat scroll -9px -9px transparent;
+}
+#block-block-1 ul.social li a#twitter{
+	background: url("../images/social.png") no-repeat scroll -43px -9px transparent;
+}
+#block-block-1 ul.social li a#google {
+	background: url("../images/social.png") no-repeat scroll -85px -9px transparent;
+}
+#block-block-1 ul.social li a#youtube {
+	background: url("../images/social.png") no-repeat scroll -128px -9px transparent;
 }
