@@ -23,6 +23,38 @@ a:hover {}
 ul {
 	list-style-type: none;
 }
+input[type="text"], input[type="email"] {
+	padding: 20px 10px;
+	width: 100%;
+	border: 1px solid #ddd;
+}
+input[type="submit"] {
+	background: none;
+	border-radius: none;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	-ms-border-radius: 0;
+	-o-border-radius: 0;
+	text-shadow: none;
+	-webkit-text-shadow: none;
+	-moz-text-shadow: none;
+	-ms-text-shadow: none;
+	-o-text-shadow: none;
+	border: none;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-ms-box-shadow: none;
+	-o-box-shadow: none;
+}
+label {
+	padding: 0 0 5px;
+}
+textarea {
+	width: 100%;
+	padding: 10px;
+	border: 1px solid #ddd;
+}
 /*
  * Header
  */
@@ -97,7 +129,9 @@ ul.nice-menu-down .menuparent a {
 	padding: 0;
 }
 
-// Social
+/*
+ * Social
+ */ 
 #block-block-1 ul.social{
 	width: 100%;
 	margin: 0;
@@ -124,4 +158,36 @@ ul.nice-menu-down .menuparent a {
 }
 #block-block-1 ul.social li a#youtube {
 	background: url("../images/social.png") no-repeat scroll -128px -9px transparent;
+}
+/*
+ * Contact
+ */
+#webform-client-form-2 .form-item {
+	float: left;
+	clear: left;
+	width: 48%;
+}
+#webform-client-form-2 .form-item.webform-component-textarea {
+	float: right;
+	clear: right;
+}
+#webform-client-form-2 .form-actions {
+	clear: both;
+	padding: 20px 0 0 0;
+}
+#webform-client-form-2 textarea {
+	height: 225px;
+	resize: none;
+}
+.webform-component-textarea .grippie {
+	display: none;
+}
+#webform-client-form-2 .form-actions input:hover {
+	background-color: #07748b;
+}
+#webform-client-form-2 input[type="submit"] {
+	background-color: #4dbcd3;
+	color: #fff;
+	padding: 10px 25px;
+	text-transform: uppercase;	
 }
