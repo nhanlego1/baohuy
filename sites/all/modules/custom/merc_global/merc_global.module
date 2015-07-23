@@ -105,10 +105,61 @@ function merc_global_block_view($delta = '') {
  * Category list
  */
 function merc_global_category_list(){
+    $terms = false;
     if(arg(0)=='taxonomy' && arg(1)=='term' && arg(3) == Null){
         $tid = arg(2);
         $term = taxonomy_term_load($tid);
+        $child = taxonomy_get_children($tid);
+        if($child){
+            $terms = $child;
+            $parent_name = $term->name;
+        }else{
+            $parent = taxonomy_get_parents($tid);
+            foreach($parent as $pa){
+                $terms = taxonomy_get_children($pa->tid);
+                $parent_name = $pa->name;
+            }
+        }
 
+    }
+    ;
+    if($node = menu_get_object('node')){
+        $tid = $node->field_category[LANGUAGE_NONE][0]['tid'];
+        $term = taxonomy_term_load($tid);
+        $child = taxonomy_get_children($tid);
+
+        if($child){
+            $terms = $child;
+            $parent_name = $term->name;
+        }else{
+            $parent = taxonomy_get_parents($tid);
+            foreach($parent as $pa){
+                $terms = taxonomy_get_children($pa->tid);
+                $parent_name = $pa->name;
+            }
+        }
+
+    }
+    if($terms){
+
+        $output = '';
+        $output .='<h2 class="title">'.$parent_name.'</h2>';
+        $output .='<ul class="sub-category">';
+        foreach($terms as $t){
+            $term = taxonomy_term_load($t->tid);
+            if($_GET['q']==menu_tree_set_path($term->name,'taxonomy/term/'.$term->tid)){
+                $output .='<li class="active">'.l($term->name,'taxonomy/term/'.$term->tid).'</li>';
+            }else{
+                $output .='<li>'.l($term->name,'taxonomy/term/'.$term->tid).'</li>';
+            }
+
+
+        }
+        $output .='</ul>';
+        return $output;
+
+    }else{
+        return false;
     }
 //    $voca = taxonomy_vocabulary_machine_name_load('category');
 //    $terms = taxonomy_get_tree($voca->vid);
