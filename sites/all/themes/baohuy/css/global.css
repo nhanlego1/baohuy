@@ -43,21 +43,9 @@ input[type="text"], input[type="email"] {
 input[type="submit"] {
 	background: none;
 	border-radius: 0;
-	-webkit-border-radius: 0;
-	-moz-border-radius: 0;
-	-ms-border-radius: 0;
-	-o-border-radius: 0;
 	text-shadow: none;
-	-webkit-text-shadow: none;
-	-moz-text-shadow: none;
-	-ms-text-shadow: none;
-	-o-text-shadow: none;
 	border: none;
 	box-shadow: none;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	-ms-box-shadow: none;
-	-o-box-shadow: none;
 }
 label {
 	padding: 0 0 5px;
@@ -91,7 +79,8 @@ ul.nice-menu > li {
 	background-color: #4dbcd3;
 	border: none;
 	border-right: 1.5px solid #fff;
-	padding: 15px 60px;
+	padding: 15px 61px;
+	-webkit-padding-end: 62px;
 }
 ul.nice-menu > li:last-child {
 	border-right: none;
@@ -324,4 +313,23 @@ h1.title{
 #block-merc-global-merc-global-category-list a:hover,
 #block-merc-global-merc-global-category-list a.active {
 	color: #cc0700;
+}
+
+/*---- Slideshow ----*/
+.view-slideshow .flexslider {
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	border-top: 10px solid #ededed;
+	margin: 0 0 20px;
+}
+.view-slideshow .flex-control-nav {
+	display: none;
+}
+.flex-direction-nav {
+	display: block;
+}
+.flex-direction-nav a {
+	background-color: #fff;
+	padding: 2px 8px;
 }
