@@ -390,7 +390,7 @@ function commerce_customer_commerce_customer_profile_type_info() {
 
   $profile_types['billing'] = array(
     'type' => 'billing',
-    'name' => t('Billing information'),
+    'name' => t('Thông tin nhận hàng'),
     'description' => t('The profile used to collect billing information on the checkout and order forms.'),
     'help' => '',
   );

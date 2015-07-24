@@ -281,13 +281,22 @@ ul.nice-menu-down .menuparent a {
 .region-sidebar-first .block-merc-global {
 	border: 1px solid #d7d7d7;
 }
-#block-merc-global-merc-global-category-list .title {
+h2.title {
 	border-bottom: 1px solid #d7d7d7;
   	padding: 0 0 10px;
   	margin-bottom: 0;
   	background: #87cedf;
   	color: #fff;
   	padding: 10px 15px;
+    font: inherit;
+    font-size: 18px;
+}
+h1.title{
+    font-size: 22px;
+    color: #4dbcd3;
+    text-transform: uppercase;
+    font-family: inherit;
+    font-weight: normal;
 }
 .sub-category {
 	display: block;
