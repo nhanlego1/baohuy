@@ -274,7 +274,7 @@ h2.title {
 	border-bottom: 1px solid #d7d7d7;
   	padding: 0 0 10px;
   	margin-bottom: 0;
-  	background: #87cedf;
+  	background-color: #cc0700;
   	color: #fff;
   	padding: 10px 15px;
     font: inherit;
@@ -309,6 +309,7 @@ h1.title{
 }
 #block-merc-global-merc-global-category-list a {
 	color: #07748b;
+	padding-left: 10px;
 }
 #block-merc-global-merc-global-category-list a:hover,
 #block-merc-global-merc-global-category-list a.active {
