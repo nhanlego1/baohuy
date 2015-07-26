@@ -334,3 +334,6 @@ h1.title{
 	background-color: #fff;
 	padding: 2px 8px;
 }
+.fivestar-average-stars .description{
+    display: none;
+}
