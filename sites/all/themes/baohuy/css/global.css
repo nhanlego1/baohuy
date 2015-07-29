@@ -12,6 +12,9 @@
   	-o-box-sizing: border-box;
   	box-sizing: border-box;
 }
+*:focus {
+	outline: 0;
+}
 body {
 	color: #888;
 }
@@ -35,8 +38,13 @@ a:hover {
 ul {
 	list-style-type: none;
 }
-input[type="text"], input[type="email"] {
-	padding: 20px 10px;
+form {
+	position: relative;
+}
+input[type="text"], 
+input[type="email"],
+input[type="password"] {
+	padding: 18px 10px;
 	width: 100%;
 	border: 1px solid #ddd;
 }
@@ -46,6 +54,10 @@ input[type="submit"] {
 	text-shadow: none;
 	border: none;
 	box-shadow: none;
+}
+.form-actions input[type="submit"]:hover,
+#block-views-exp-search-product-page input[type="submit"]:hover {
+	background-color: #07748b;
 }
 label {
 	padding: 0 0 5px;
@@ -195,7 +207,7 @@ ul.nice-menu-down .menuparent a {
 	padding: 20px 0 0 0;
 }
 #webform-client-form-2 textarea {
-	height: 225px;
+	height: 214px;
 	resize: none;
 }
 .webform-component-textarea .grippie {
@@ -408,7 +420,7 @@ ul.social {
 }
 ul.social a {
 	display: block;
-	padding: 0 35px;
+	padding: 0 10px;
 }
 ul.social a.facebook {
 	background: url("../images/face-icon.png") no-repeat scroll 0 0 transparent;
@@ -430,6 +442,9 @@ li.email {
 }
 #block-block-3 p {
 	margin-bottom: 11px;
+}
+.region-footer-first ul.social a {
+	padding: 0 32px;
 }
 /*------ Category Product ----*/
 .view-category .views-row {
@@ -509,4 +524,31 @@ input[type="submit"],  input[type="submit"]:hover{
     color: #fff;
     padding: 10px 25px;
     text-transform: uppercase;
+}
+/*----- Form user account -----*/
+form#user-login .form-item,
+form#user-register-form .form-item{
+	width: 456px;
+	margin-top: 15px;
+}
+form#views-exposed-form-search-product-page input#edit-submit-search-product{
+	position: absolute;
+    right: 26px;
+    top: 0;
+    margin-top: 7px;
+}
+.user-info-from-cookie .password-strength,
+.user-info-from-cookie div.password-confirm {
+	float: none;
+	position: absolute;
+    right: 40%;
+}
+/*---- Form search -----*/
+#block-views-exp-search-product-page {
+	float: right;
+    margin-right: 70px;
+    margin-top: 2px
+}
+#block-views-exp-search-product-page input[type="submit"] {
+	padding: 12px 25px !important;
 }
