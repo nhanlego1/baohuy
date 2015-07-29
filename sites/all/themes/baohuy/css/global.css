@@ -74,6 +74,7 @@ img {
 .section-content {
 	margin-bottom: 100px;
 }
+
 /*
  * Header
  */
@@ -548,7 +549,45 @@ form#views-exposed-form-search-product-page input#edit-submit-search-product{
 	float: right;
     margin-right: 70px;
     margin-top: 2px
+    width: 30%;
 }
 #block-views-exp-search-product-page input[type="submit"] {
 	padding: 12px 25px !important;
+}
+/*---- Node product -------*/
+.node-product table {
+	width: 100% !important;
+	display: block;
+	padding: 20px;
+}
+.commerce-add-to-cart label {
+	display: none;
+}
+.commerce-product-sku-label {
+	float: left;
+	font-weight: bold;
+	margin-right: 5px;
+}
+.node-product .field-label {
+	margin-right: 5px;
+}
+.node-product .field,
+.commerce-product-sku {
+	margin: 0 0 10px;
+}
+#fivestar-custom-widget {
+	padding-top: 10px
+}
+.node-product .content-product-top {
+	padding-bottom: 50px;
+}
+.field-name-field-old-price {
+	border-bottom: 1px solid #ddd;
+    padding: 0px 0px 12px;
+}
+.field-name-commerce-price .field-item {
+	color: #4dbcd3;
+}
+h2.detail-info {
+	margin-bottom: 10px;
 }
