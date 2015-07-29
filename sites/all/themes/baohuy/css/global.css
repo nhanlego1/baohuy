@@ -86,7 +86,7 @@ ul.nice-menu > li {
 	background-color: #4dbcd3;
 	border: none;
 	border-right: 1.5px solid #fff;
-	padding: 15px 61px;
+	padding: 15px 60px;
 	-webkit-padding-end: 62px;
 }
 ul.nice-menu > li:last-child {
@@ -483,16 +483,16 @@ li.email {
 }
 .view-typical-product-home .views-field-view-node,
 .view-category .views-field-view-node {
-	background: url("../images/detail.png") no-repeat scroll left center #e3f7fa;
-	width: 80px;
-	height: 40px;
+	background: #e3f7fa;
 	float: left;
 }
 .view-typical-product-home .views-field-view-node a,
 .view-category .views-field-view-node a {
-	font-size: 0;
-	display: block;
-	height: 100%;
+    display: block;
+    height: 100%;
+    padding: 10px;
+    color: #00bbd3;
+    font-size: 14px;
 }
 .views-field-field-voting {
 	display: inline-block;
@@ -503,4 +503,10 @@ li.email {
 .view-typical-product-home .views-row {
 	margin: 0 30px 50px 0;
     width: 23% !important;
+}
+input[type="submit"],  input[type="submit"]:hover{
+    background-color: #4dbcd3;
+    color: #fff;
+    padding: 10px 25px;
+    text-transform: uppercase;
 }
