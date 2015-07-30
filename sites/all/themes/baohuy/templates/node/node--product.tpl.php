@@ -23,6 +23,7 @@
                 <?php print render($content['field_product']); ?>
                 <?php print render($content['field_voting']) ?>
                 <?php print render($content['addtoany']) ?>
+                <!--detail-->
 
             </div>
         </div>
