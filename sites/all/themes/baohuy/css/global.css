@@ -548,8 +548,11 @@ form#views-exposed-form-search-product-page input#edit-submit-search-product{
 #block-views-exp-search-product-page {
 	float: right;
     margin-right: 70px;
-    margin-top: 2px
+    margin-top: 2px;
     width: 30%;
+}
+#block-views-exp-search-product-page input[type="text"] {
+	width: 327px;
 }
 #block-views-exp-search-product-page input[type="submit"] {
 	padding: 12px 25px !important;
@@ -590,4 +593,27 @@ form#views-exposed-form-search-product-page input#edit-submit-search-product{
 }
 h2.detail-info {
 	margin-bottom: 10px;
+}
+.cloud-zoom-gallery-thumbs > a {
+	float: left;
+	margin: 10px 13px 0 0;
+	width: 31%;
+}
+.cloud-zoom-gallery-thumbs > a:last-child {
+	margin-right: 0;
+}
+.cloud-zoom-container .cloud-zoom-gallery-thumbs {
+	clear: none;
+	float: none !important;
+}
+#wrap {
+	float: none !important;
+}
+.node-product .content-product-top,
+.node-product .image-cloud {
+	margin: 0;
+}
+.node-product .small-info {
+	margin: 0 0 0 40px;
+    width: 52% !important;
 }
