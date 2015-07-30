@@ -563,8 +563,23 @@ form#views-exposed-form-search-product-page input#edit-submit-search-product{
 	display: block;
 	padding: 20px;
 }
+.node-product .content-product-bottom {
+	width: 100% !important;
+	margin: 0 !important;
+}
+.node-product .detail-info {
+	background-color: #FBFBFB;
+	border: 1px solid #ddd;
+    display: inline-block;
+    font-family: inherit;
+    padding: 10px 20px;
+    width: 100%;
+}
 .commerce-add-to-cart label {
 	display: none;
+}
+.content-product-bottom .field-item > p:first-child {
+	margin-left: 20px;
 }
 .commerce-product-sku-label {
 	float: left;
@@ -578,8 +593,19 @@ form#views-exposed-form-search-product-page input#edit-submit-search-product{
 .commerce-product-sku {
 	margin: 0 0 10px;
 }
+.commerce-add-to-cart input#edit-quantity {
+	font-size: 14px;
+}
 #fivestar-custom-widget {
 	padding-top: 10px
+}
+.field-name-field-old-price,
+.field-name-commerce-price {
+	font-size: 16px;
+	font-weight: bold;
+}
+.field-name-field-old-price .field-item{
+	text-decoration: line-through;
 }
 .node-product .content-product-top {
 	padding-bottom: 50px;
