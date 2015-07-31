@@ -199,10 +199,10 @@ ul.nice-menu-down .menuparent a {
 	clear: left;
 	width: 48%;
 }
-#webform-client-form-2 .form-item.webform-component-textarea {
-	float: right;
-	clear: right;
-}
+/*#webform-client-form-2 .form-item.webform-component-textarea {*/
+	/*float: right;*/
+	/*clear: right;*/
+/*}*/
 #webform-client-form-2 .form-actions {
 	clear: both;
 	padding: 20px 0 0 0;

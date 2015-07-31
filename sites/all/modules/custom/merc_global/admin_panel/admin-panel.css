@@ -9,13 +9,16 @@ Admin Panel Styling
 
 }
 .panel-wrapper{
-    width: 45%;
-    float:left;
-    margin-left: 20px;
+    float: left;
+    margin-left: 0px;
     border: 1px solid #eee;
     margin-top: 20px;
-    padding: 20px;
-    min-height: 220px;
+    padding: 18px;
+    min-height: 178px;
+}
+.panel-wrapper h2{
+    background-color: #eee;
+    padding: 10px;
 }
 #admin-panel #title {
 	margin-bottom: 20px;
@@ -71,24 +74,24 @@ Admin Panel Styling
 	background-position: right;
 }
 
-#admin-panel ul li.add a {
-	background-image:url(images/add.png);
-}
-#admin-panel ul li.manage a {
-	background-image:url(images/manage.png);
-}
-#admin-panel ul li.view a {
-	background-image:url(images/view.png);
-}
-#admin-panel ul li.manual a {
-	background-image:url(images/manual.png);
-}
-#admin-panel ul li.stats a {
-	background-image:url(images/stats.png);
-}
-#admin-panel ul li.user-logout a {
-	background-image:url(images/user-logout.png);
-}
+/*#admin-panel ul li.add a {*/
+	/*background-image:url(images/add.png);*/
+/*}*/
+/*#admin-panel ul li.manage a {*/
+	/*background-image:url(images/manage.png);*/
+/*}*/
+/*#admin-panel ul li.view a {*/
+	/*background-image:url(images/view.png);*/
+/*}*/
+/*#admin-panel ul li.manual a {*/
+	/*background-image:url(images/manual.png);*/
+/*}*/
+/*#admin-panel ul li.stats a {*/
+	/*background-image:url(images/stats.png);*/
+/*}*/
+/*#admin-panel ul li.user-logout a {*/
+	/*background-image:url(images/user-logout.png);*/
+/*}*/
 
 
 /* Admin panel links styling */

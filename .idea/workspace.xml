@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="4565c4ea-1e8c-4e74-8f14-a9ee2a93fa56" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/devel/krumo/docs/Krumo/_class.krumo.php.html" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/devel/krumo/docs/Krumo/_class.krumo.php.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/themes/baohuy/baohuy.info" afterPath="$PROJECT_DIR$/sites/all/themes/baohuy/baohuy.info" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/merc_global/admin_panel/admin-panel.css" afterPath="$PROJECT_DIR$/sites/all/modules/custom/merc_global/admin_panel/admin-panel.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/devel/krumo/docs/classtrees_Krumo.html" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/devel/krumo/docs/classtrees_Krumo.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/themes/baohuy/css/global.css" afterPath="$PROJECT_DIR$/sites/all/themes/baohuy/css/global.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/contrib/devel/krumo/docs/Krumo/krumo.html" afterPath="$PROJECT_DIR$/sites/all/modules/contrib/devel/krumo/docs/Krumo/krumo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/merc_global/merc_global.module" afterPath="$PROJECT_DIR$/sites/all/modules/custom/merc_global/merc_global.module" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/themes/baohuy/js/mercvn.js" afterPath="$PROJECT_DIR$/sites/all/themes/baohuy/js/mercvn.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sites/all/modules/custom/merc_global/theme/merc-global-panel.tpl.php" afterPath="$PROJECT_DIR$/sites/all/modules/custom/merc_global/theme/merc-global-panel.tpl.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="e39bacd7-0724-4732-86d9-361852ab2501" name="Failed commit: Default" comment="Merge branch 'master' of https://github.com/nhanlego1/baohuy.git&#10;&#10;Conflicts:&#10;&#9;sites/all/themes/baohuy/css/global.css&#10;" />
@@ -22,6 +21,8 @@
     <file path="/a.dummy" changelist="4565c4ea-1e8c-4e74-8f14-a9ee2a93fa56" time="1437700849485" ignored="false" />
     <file path="/node--product.tpl.php" changelist="4565c4ea-1e8c-4e74-8f14-a9ee2a93fa56" time="1438268231692" ignored="false" />
     <file path="/mercvn.js" changelist="4565c4ea-1e8c-4e74-8f14-a9ee2a93fa56" time="1438331198093" ignored="false" />
+    <file path="/merc-global-panel.tpl.php" changelist="4565c4ea-1e8c-4e74-8f14-a9ee2a93fa56" time="1438355727770" ignored="false" />
+    <file path="/admin-panel.css" changelist="4565c4ea-1e8c-4e74-8f14-a9ee2a93fa56" time="1438355989812" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,10 +42,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="global.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="global.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sites/all/themes/baohuy/css/global.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="412" column="19" selection-start="7499" selection-end="7499" vertical-scroll-proportion="0.31470588">
+            <state line="201" column="0" selection-start="3360" selection-end="3466" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="merc-global-panel.tpl.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/merc_global/theme/merc-global-panel.tpl.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="123" selection-start="716" selection-end="716" vertical-scroll-proportion="0.26966292">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="admin-panel.css" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/merc_global/admin_panel/admin-panel.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="93" column="3" selection-start="1348" selection-end="1857" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -113,6 +132,8 @@
         <option value="$PROJECT_DIR$/sites/all/themes/baohuy/baohuy.info" />
         <option value="$PROJECT_DIR$/sites/all/themes/baohuy/js/mercvn.js" />
         <option value="$PROJECT_DIR$/sites/all/themes/baohuy/css/global.css" />
+        <option value="$PROJECT_DIR$/sites/all/modules/custom/merc_global/admin_panel/admin-panel.css" />
+        <option value="$PROJECT_DIR$/sites/all/modules/custom/merc_global/theme/merc-global-panel.tpl.php" />
       </list>
     </option>
   </component>
@@ -326,6 +347,74 @@
               <option name="myItemId" value="all" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="merc_global" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="theme" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="baohuy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="baohuy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sites" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="all" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="custom" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="merc_global" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin_panel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="baohuy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="baohuy" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sites" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="all" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -441,16 +530,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="1" selection-start="70" selection-end="70" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="1" selection-start="70" selection-end="70" vertical-scroll-proportion="0.017595308" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
         <state line="19" column="69" selection-start="817" selection-end="817" vertical-scroll-proportion="0.34080717" />
@@ -526,7 +605,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/sites/all/themes/baohuy/css/global.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="412" column="19" selection-start="7499" selection-end="7499" vertical-scroll-proportion="0.31470588">
+        <state line="201" column="0" selection-start="3360" selection-end="3466" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/merc_global/admin_panel/admin-panel.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="3" selection-start="1348" selection-end="1857" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sites/all/modules/custom/merc_global/theme/merc-global-panel.tpl.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="123" selection-start="716" selection-end="716" vertical-scroll-proportion="0.26966292">
           <folding />
         </state>
       </provider>
