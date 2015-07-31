@@ -220,24 +220,33 @@ function merc_global_order(){
  * Implement hook_form_alter
  */
 
-//function merc_global_form_alter(&$form, &$form_state, $form_id){
-//    if($form['#id'] == 'views-exposed-form-promotion-product-page-4'){
-//       $form['title']['#attributes']['placeholder'] = 'Tìm kiếm sản phẩm';
-//       $form['category']['#options']['All'] = 'Chuyên mục';
-//    }if($form['#id'] == 'views-exposed-form-promotion-product-block-1' || $form['#id'] == 'views-exposed-form-promotion-product-page-1'){
-//        $form['field_brand_tid']['#options']['All'] = 'Tất Cả';
-//    }
-//    if($form_id == 'webform_client_form_2' ){
-//        $form['actions']['submit']['#value'] = 'Gửi';
-//    }
-//    if($form_id == 'webform_client_form_162'){
-//        $form['actions']['submit']['#value'] = 'Gửi';
-//        $node = menu_get_object('node');
-//        $product = commerce_product_load($node->field_product[LANGUAGE_NONE][0]['product_id']);
-//        $form['submitted']['model']['#default_value'] = $product->sku;
-//        //dsm($product);
-//    }
-//}
+function merc_global_form_alter(&$form, &$form_state, $form_id){
+    switch($form_id){
+        case 'user_register_form':
+            $form['account']['name']['#title'] = 'Tên tài khoản';
+            $form['account']['mail']['#title'] = 'Địa chỉ email';
+            $form['actions']['submit']['#value'] = 'Tạo tài khoản';
+            drupal_set_title('Đăng ký tài khoản');
+            break;
+        case 'user_login':
+            $form['name']['#title'] = 'Tên tài khoản';
+            $form['pass']['#title'] = 'Mật khẩu';
+            $form['actions']['submit']['#value'] = 'Đăng nhập';
+            drupal_set_title('Đăng nhập ');
+            break;
+        case 'user_pass':
+            $form['name']['#title'] = 'Tên tài khoản hoặc địa chỉ email';
+            $form['actions']['submit']['#value'] = 'Tìm mật khẩu ';
+            drupal_set_title('Quên mật khẩu  ');
+            break;
+        case 'user_profile_form':
+            $form['account']['mail']['#title'] = 'Địa chỉ email';
+            $form['account']['current_pass']['#title'] = 'Mật khẩu hiện tại ';
+            $form['actions']['submit']['#value'] = 'Cập nhật ';
+            break;
+
+    }
+}
 
 
 /*
