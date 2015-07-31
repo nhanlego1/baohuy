@@ -597,6 +597,7 @@ form#views-exposed-form-search-product-page input#edit-submit-search-product{
 }
 .commerce-add-to-cart input#edit-quantity {
 	font-size: 14px;
+	padding: 0 10px;
 }
 #fivestar-custom-widget {
 	padding-top: 10px
