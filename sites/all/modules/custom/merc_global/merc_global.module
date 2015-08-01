@@ -223,9 +223,12 @@ function merc_global_order(){
 function merc_global_form_alter(&$form, &$form_state, $form_id){
     switch($form_id){
         case 'user_register_form':
-            $form['account']['name']['#title'] = 'Tên tài khoản';
-            $form['account']['mail']['#title'] = 'Địa chỉ email';
-            $form['actions']['submit']['#value'] = 'Tạo tài khoản';
+            if(arg(0) != 'admin'){
+                $form['account']['name']['#title'] = 'Tên tài khoản';
+                $form['account']['mail']['#title'] = 'Địa chỉ email';
+                $form['actions']['submit']['#value'] = 'Tạo tài khoản';
+            }
+
             drupal_set_title('Đăng ký tài khoản');
             break;
         case 'user_login':
